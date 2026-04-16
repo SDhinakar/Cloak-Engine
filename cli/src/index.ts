@@ -104,32 +104,32 @@ program
   .option("-f, --format <format>", "SBOM format (spdx or cyclonedx)", "spdx")
   .action(sbomCommand);
 
-program
-  .command("perf")
-  .description("Run performance testing")
-  .option("--load", "Run load test (default)")
-  .option("--stress", "Run stress test (increasing load)")
-  .option("--web <url>", "Run Lighthouse audit on URL")
-  .option("--baseline", "Save results as baseline")
-  .option("--compare", "Compare with baseline")
-  .option("--duration <duration>", "Test duration (e.g., 30s, 1m)", "30s")
-  .option("--vus <number>", "Virtual users", "10")
-  .option("--url <url>", "Target URL for load/stress test")
-  .action(perfCommand);
+// program
+//   .command("perf")
+//   .description("Run performance testing")
+//   .option("--load", "Run load test (default)")
+//   .option("--stress", "Run stress test (increasing load)")
+//   .option("--web <url>", "Run Lighthouse audit on URL")
+//   .option("--baseline", "Save results as baseline")
+//   .option("--compare", "Compare with baseline")
+//   .option("--duration <duration>", "Test duration (e.g., 30s, 1m)", "30s")
+//   .option("--vus <number>", "Virtual users", "10")
+//   .option("--url <url>", "Target URL for load/stress test")
+//   .action(perfCommand);
 
-program
-  .command("mutation")
-  .description("Run mutation testing to assess test quality")
-  .option(
-    "--framework <framework>",
-    "Mutation framework (stryker, mutmut, pitest, auto)",
-    "auto"
-  )
-  .option("--threshold <number>", "Minimum mutation score (0-100)", (val) => parseInt(val), 80)
-  .option("--files <files>", "Comma-separated list of files to mutate")
-  .option("--test-command <command>", "Custom test command")
-  .option("--timeout <ms>", "Timeout per test in milliseconds", (val) => parseInt(val), 5000)
-  .action(mutationCommand);
+// program
+//   .command("mutation")
+//   .description("Run mutation testing to assess test quality")
+//   .option(
+//     "--framework <framework>",
+//     "Mutation framework (stryker, mutmut, pitest, auto)",
+//     "auto"
+//   )
+//   .option("--threshold <number>", "Minimum mutation score (0-100)", (val) => parseInt(val), 80)
+//   .option("--files <files>", "Comma-separated list of files to mutate")
+//   .option("--test-command <command>", "Custom test command")
+//   .option("--timeout <ms>", "Timeout per test in milliseconds", (val) => parseInt(val), 5000)
+//   .action(mutationCommand);
 
 program
   .command("rules [files...]")
@@ -268,56 +268,56 @@ program
     refactorCommand(options);
   });
 
-program
-  .command("threat-model [file]")
-  .description(
-    "AI-powered threat modeling with STRIDE analysis (Phase 5 feature)"
-  )
-  .option("-f, --file <path>", "Specific file to analyze")
-  .option(
-    "-c, --category <category>",
-    "Focus on specific STRIDE category (spoofing, tampering, repudiation, information-disclosure, denial-of-service, elevation-of-privilege)"
-  )
-  .option("--flows", "Include data flow mapping", true)
-  .option("--diagram", "Generate threat model diagram")
-  .option(
-    "--focus <area>",
-    "Focus area: authentication, data-protection, api-security, or all"
-  )
-  .option(
-    "-s, --severity <level>",
-    "Minimum severity level: low, medium, high, critical"
-  )
-  .option("--report", "Generate full threat model report")
-  .option("-o, --output <path>", "Save report to file")
-  .action((file, options) => {
-    if (file && typeof file === "string") options.file = file;
-    threatModelCommand(options);
-  });
+// program
+//   .command("threat-model [file]")
+//   .description(
+//     "AI-powered threat modeling with STRIDE analysis (Phase 5 feature)"
+//   )
+//   .option("-f, --file <path>", "Specific file to analyze")
+//   .option(
+//     "-c, --category <category>",
+//     "Focus on specific STRIDE category (spoofing, tampering, repudiation, information-disclosure, denial-of-service, elevation-of-privilege)"
+//   )
+//   .option("--flows", "Include data flow mapping", true)
+//   .option("--diagram", "Generate threat model diagram")
+//   .option(
+//     "--focus <area>",
+//     "Focus area: authentication, data-protection, api-security, or all"
+//   )
+//   .option(
+//     "-s, --severity <level>",
+//     "Minimum severity level: low, medium, high, critical"
+//   )
+//   .option("--report", "Generate full threat model report")
+//   .option("-o, --output <path>", "Save report to file")
+//   .action((file, options) => {
+//     if (file && typeof file === "string") options.file = file;
+//     threatModelCommand(options);
+//   });
 
-program
-  .command("migrate [file]")
-  .description("AI-powered code migration assistant (Phase 5 feature)")
-  .option(
-    "-t, --type <type>",
-    "Migration type: framework, language, modernization, dependency"
-  )
-  .option(
-    "--target <target>",
-    "Migration target (e.g., react-class-to-hooks, typescript, es5-to-es6)"
-  )
-  .option("--from <source>", "Source framework/language (e.g., react, es5)")
-  .option("--to <target>", "Target framework/language (e.g., vue, es6)")
-  .option("-f, --file <path>", "Specific file to migrate")
-  .option("--dry-run", "Preview changes without applying them", true)
-  .option("--auto-fix", "Automatically apply fixes")
-  .option("--backup", "Create backups of original files", true)
-  .option("--report", "Generate migration report")
-  .option("-o, --output <path>", "Save report to file")
-  .action((file, options) => {
-    if (file && typeof file === "string") options.file = file;
-    migrateCommand(options);
-  });
+// program
+//   .command("migrate [file]")
+//   .description("AI-powered code migration assistant (Phase 5 feature)")
+//   .option(
+//     "-t, --type <type>",
+//     "Migration type: framework, language, modernization, dependency"
+//   )
+//   .option(
+//     "--target <target>",
+//     "Migration target (e.g., react-class-to-hooks, typescript, es5-to-es6)"
+//   )
+//   .option("--from <source>", "Source framework/language (e.g., react, es5)")
+//   .option("--to <target>", "Target framework/language (e.g., vue, es6)")
+//   .option("-f, --file <path>", "Specific file to migrate")
+//   .option("--dry-run", "Preview changes without applying them", true)
+//   .option("--auto-fix", "Automatically apply fixes")
+//   .option("--backup", "Create backups of original files", true)
+//   .option("--report", "Generate migration report")
+//   .option("-o, --output <path>", "Save report to file")
+//   .action((file, options) => {
+//     if (file && typeof file === "string") options.file = file;
+//     migrateCommand(options);
+//   });
 
 program
   .command("review [file]")
